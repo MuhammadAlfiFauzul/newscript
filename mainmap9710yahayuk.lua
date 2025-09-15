@@ -6760,7 +6760,7 @@ end)
 
 discordBtn.MouseButton1Click:Connect(function()
     if setclipboard then
-        setclipboard("https://discord.gg/tfNqRQsqHK")
+        setclipboard("...")
     end
 end)
 
