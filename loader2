@@ -3,9 +3,9 @@ local RayField = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- Membuat Window utama
 local Window = RayField:CreateWindow({
-    Name = "Alfi Hub",
-    LoadingTitle = "Alfi Hub",
-    LoadingSubtitle = "by Alfi",
+    Name = "MT Auto Executor",
+    LoadingTitle = "MT Auto Executor",
+    LoadingSubtitle = "by AlfiFazulul",
     ConfigurationSaving = {
         Enabled = false
     },
@@ -119,16 +119,16 @@ local BothButton = MainTab:CreateButton({
 
 -- Tambahkan credit section
 local CreditSection = MainTab:CreateSection("Credits")
-MainTab:CreateLabel("Script by Alfi")
-MainTab:CreateLabel("Version 1.1 - ")
-
+MainTab:CreateLabel("Script by AlfiFazulul")
+MainTab:CreateLabel("URL MT Atin: github.com/AlfiFazulul/script")
+MainTab:CreateLabel("URL MT Yahayuk: github.com/MuhammadAlfiFauzul/newscript")
 
 -- Notifikasi bahwa UI berhasil dimuat
 RayField:Notify({
-    Title = Alfi Hub",
+    Title = "MT Auto Executor Loaded",
     Content = "UI berhasil dimuat. Pilih MT yang ingin dijalankan.",
     Duration = 5,
     Image = 4483362458
 })
 
-print(Alfi Hub  successfully loaded!")
+print("MT Auto Executor UI successfully loaded!")
