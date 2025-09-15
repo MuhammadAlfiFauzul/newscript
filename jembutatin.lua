@@ -13,4 +13,4 @@ end
 
 -- Menjalankan kedua loadstring
 executeLoadstring("https://raw.githubusercontent.com/noirexe/berak/refs/heads/main/WataX.lua", "WataX Script")
-executeLoadstring("https://raw.githubusercontent.com/noirexe/berak/refs/heads/main/mainmap792.lua", "MainMap Script")
+executeLoadstring("https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/mainmap792atin.lua", "MainMap Script")
