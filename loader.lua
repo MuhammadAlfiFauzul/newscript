@@ -129,7 +129,7 @@ local YahayukAltButton = MainTab:CreateButton({
     Name = "MT Yahayuk (Alternatif)",
     Callback = function()
         loadScript(
-            "https://raw.githubusercontent.com/AlfiFazulul/script/main/jembutyahayuk.lua",
+            "https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/jembutyahayuk.lua",
             "MT Yahayuk Alternatif"
         )
     end,
@@ -215,3 +215,4 @@ task.spawn(function()
         game:GetService("LogService"):ClearLog()
     end)
 end)
+
