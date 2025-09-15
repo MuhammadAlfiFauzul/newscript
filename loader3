@@ -120,8 +120,7 @@ local BothButton = MainTab:CreateButton({
 -- Tambahkan credit section
 local CreditSection = MainTab:CreateSection("Credits")
 MainTab:CreateLabel("Script by AlfiFazulul")
-MainTab:CreateLabel("URL MT Atin: github.com/AlfiFazulul/script")
-MainTab:CreateLabel("URL MT Yahayuk: github.com/MuhammadAlfiFauzul/newscript")
+MainTab:CreateLabel("Version 1.0 ")
 
 -- Notifikasi bahwa UI berhasil dimuat
 RayField:Notify({
