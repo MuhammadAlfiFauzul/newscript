@@ -22,7 +22,7 @@ local AtinSection = MainTab:CreateSection("MT Atin")
 local AtinButton = MainTab:CreateButton({
     Name = "Execute MT Atin",
     Callback = function()
-        local url = "https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutatin.lua"
+        local url = "https://raw.githubusercontent.com/MuhammadAlfiFauzul/script/refs/heads/main/jembutatin.lua"
         local s, e = pcall(function()
             return loadstring(game:HttpGet(url))()
         end)
@@ -51,7 +51,7 @@ local YahayukSection = MainTab:CreateSection("MT Yahayuk")
 local YahayukButton = MainTab:CreateButton({
     Name = "Execute MT Yahayuk",
     Callback = function()
-        local url = "https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutyahayuk.lua"
+        local url = "https://raw.githubusercontent.com/MuhammadAlfiFauzul/script/refs/heads/main/jembutyahayuk.lua"
         local s, e = pcall(function()
             return loadstring(game:HttpGet(url))()
         end)
@@ -125,3 +125,4 @@ local BothButton = MainTab:CreateButton({
         end
     end
 })
+
