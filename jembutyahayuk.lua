@@ -12,5 +12,5 @@ local function executeLoadstring(url, name)
 end
 
 -- Menjalankan kedua loadstring
-executeLoadstring("https://raw.githubusercontent.com/noirexe/berak/refs/heads/main/WataXyahayuk.lua", "WataX Script")
-executeLoadstring("https://raw.githubusercontent.com/noirexe/berak/refs/heads/main/mainmap9710yahayuk.lua", "MainMap Script")
+executeLoadstring("https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/WataXyahayuk.lua", "WataX Script")
+executeLoadstring("https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/mainmap9710yahayuk.lua", "MainMap Script")
