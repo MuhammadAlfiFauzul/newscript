@@ -1,4 +1,4 @@
-local url = "https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutyahayuk.lua"
+local url = "https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/jembutyahayuk.lua"
 local s, e = pcall(function()
     return loadstring(game:HttpGet(url))()
 end)
