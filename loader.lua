@@ -49,7 +49,7 @@ end)
 
 -- Tombol MT Yahayuk
 createButton("Execute MT Yahayuk", UDim2.new(0.1, 0, 0.5, 0), function()
-    local success, errorMsg = executeScript("https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutyahayuk.lua")
+    local success, errorMsg = executeScript("https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/jembutyahayuk.lua")
     if success then
         print("MT Yahayuk executed successfully!")
     else
@@ -58,3 +58,4 @@ createButton("Execute MT Yahayuk", UDim2.new(0.1, 0, 0.5, 0), function()
 end)
 
 print("Simple MT Executor UI loaded!")
+
