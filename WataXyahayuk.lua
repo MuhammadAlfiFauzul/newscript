@@ -48,7 +48,7 @@ local function createUI()
     end
 
     local ScreenGui = Instance.new("ScreenGui")
-    ScreenGui.Name = "WataX_AnimUI"
+    ScreenGui.Name = "Alfi_AnimUI"
     ScreenGui.ResetOnSpawn = false
     ScreenGui.Parent = player:WaitForChild("PlayerGui")
 
@@ -73,7 +73,7 @@ local function createUI()
     Label.TextColor3 = Color3.fromRGB(200,200,255)
     Label.Font = Enum.Font.GothamBold
     Label.TextSize = 16
-    Label.Text = "WataX"
+    Label.Text = "Alfi"
     Label.Parent = Frame
 
     
