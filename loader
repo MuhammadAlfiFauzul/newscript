@@ -1,0 +1,134 @@
+-- Pastikan RayField sudah di-load
+local RayField = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- Membuat Window utama
+local Window = RayField:CreateWindow({
+    Name = "Alfi Hub",
+    LoadingTitle = "Alfi Hub",
+    LoadingSubtitle = "by Alfi",
+    ConfigurationSaving = {
+        Enabled = false
+    },
+    Discord = {
+        Enabled = false
+    }
+})
+
+-- Membuat Tab utama
+local MainTab = Window:CreateTab("Main", 4483362458)
+
+-- Fungsi untuk execute script (sama dengan versi sederhana)
+local function executeScript(url)
+    local success, errorMsg = pcall(function()
+        local scriptContent = game:HttpGet(url)
+        loadstring(scriptContent)()
+    end)
+    return success, errorMsg
+end
+
+-- Section untuk MT Atin
+local AtinSection = MainTab:CreateSection("MT Atin")
+local AtinButton = MainTab:CreateButton({
+    Name = "Execute MT Atin",
+    Callback = function()
+        local success, errorMsg = executeScript("https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutatin.lua")
+        if success then
+            print("MT Atin executed successfully!")
+            RayField:Notify({
+                Title = "Success",
+                Content = "MT Atin berhasil dijalankan!",
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        else
+            warn("Error loading MT Atin:", errorMsg)
+            RayField:Notify({
+                Title = "Error",
+                Content = "Gagal memuat MT Atin: " .. tostring(errorMsg),
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        end
+    end
+})
+
+-- Section untuk MT Yahayuk
+local YahayukSection = MainTab:CreateSection("MT Yahayuk")
+local YahayukButton = MainTab:CreateButton({
+    Name = "Execute MT Yahayuk",
+    Callback = function()
+        local success, errorMsg = executeScript("https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/jembutyahayuk.lua")
+        if success then
+            print("MT Yahayuk executed successfully!")
+            RayField:Notify({
+                Title = "Success",
+                Content = "MT Yahayuk berhasil dijalankan!",
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        else
+            warn("Error loading MT Yahayuk:", errorMsg)
+            RayField:Notify({
+                Title = "Error",
+                Content = "Gagal memuat MT Yahayuk: " .. tostring(errorMsg),
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        end
+    end
+})
+
+-- Section untuk eksekusi keduanya
+local BothSection = MainTab:CreateSection("Execute Both")
+local BothButton = MainTab:CreateButton({
+    Name = "Execute Both MT",
+    Callback = function()
+        -- Eksekusi MT Atin
+        local success1, error1 = executeScript("https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutatin.lua")
+        
+        -- Tunggu sebentar sebelum eksekusi kedua
+        wait(0.5)
+        
+        -- Eksekusi MT Yahayuk
+        local success2, error2 = executeScript("https://raw.githubusercontent.com/MuhammadAlfiFauzul/newscript/refs/heads/main/jembutyahayuk.lua")
+        
+        if success1 and success2 then
+            RayField:Notify({
+                Title = "Success",
+                Content = "Kedua MT berhasil dijalankan!",
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        elseif success1 or success2 then
+            RayField:Notify({
+                Title = "Partial Success",
+                Content = "Satu MT berhasil dijalankan, satu gagal",
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        else
+            RayField:Notify({
+                Title = "Error",
+                Content = "Kedua MT gagal dijalankan",
+                Duration = 6.5,
+                Image = 4483362458
+            })
+        end
+    end
+})
+
+-- Tambahkan credit section
+local CreditSection = MainTab:CreateSection("Credits")
+MainTab:CreateLabel("Script by Alfi")
+MainTab:CreateLabel("Version 1.1 - ")
+
+
+-- Notifikasi bahwa UI berhasil dimuat
+RayField:Notify({
+    Title = Alfi Hub",
+    Content = "UI berhasil dimuat. Pilih MT yang ingin dijalankan.",
+    Duration = 5,
+    Image = 4483362458
+})
+
+print(Alfi Hub  successfully loaded!")
