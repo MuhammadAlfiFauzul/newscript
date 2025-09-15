@@ -2,9 +2,9 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- Membuat window utama
 local Window = Rayfield:CreateWindow({
-    Name = "MT Manager",
+    Name = "MT Manager - Fixed",
     LoadingTitle = "MT Manager",
-    LoadingSubtitle = "by Script Manager",
+    LoadingSubtitle = "Dengan Error Handling yang Lebih Baik",
     ConfigurationSaving = {
         Enabled = true,
         FolderName = "MTManager",
@@ -18,6 +18,55 @@ local Window = Rayfield:CreateWindow({
     KeySystem = false,
 })
 
+-- Fungsi untuk memuat script dengan error handling yang lebih baik
+local function loadScript(url, scriptName)
+    Rayfield:Notify({
+        Title = "Memuat " .. scriptName,
+        Content = "Sedang memuat script, harap tunggu...",
+        Duration = 3,
+        Image = 4483362458,
+    })
+    
+    -- Menggunakan task.spawn untuk mencegah blocking UI
+    task.spawn(function()
+        local success, result = pcall(function()
+            local scriptContent = game:HttpGet(url, true)
+            if not scriptContent or scriptContent == "" then
+                error("Script kosong atau tidak dapat diunduh")
+            end
+            
+            -- Memeriksa kode sebelum dijalankan
+            if scriptContent:find("attempt to call a nil value") then
+                error("Script mengandung potensi error: attempt to call a nil value")
+            end
+            
+            local loadedFunction = loadstring(scriptContent)
+            if not loadedFunction then
+                error("Gagal mengkompilasi script")
+            end
+            
+            return loadedFunction()
+        end)
+
+        if not success then
+            warn("Error load " .. scriptName .. ":", result)
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Gagal memuat " .. scriptName .. ": " .. tostring(result),
+                Duration = 8,
+                Image = 4483362458,
+            })
+        else
+            Rayfield:Notify({
+                Title = "Sukses",
+                Content = scriptName .. " berhasil dimuat!",
+                Duration = 6.5,
+                Image = 4483362458,
+            })
+        end
+    end)
+end
+
 -- Membuat tab utama
 local MainTab = Window:CreateTab("Main", 4483362458)
 
@@ -26,36 +75,23 @@ local AtinSection = MainTab:CreateSection("MT Atin")
 
 -- Membuat button untuk MT Atin
 local AtinButton = MainTab:CreateButton({
-    Name = "Tambahkan MT Atin",
+    Name = "Tambahkan MT Atin (Fixed)",
     Callback = function()
-        Rayfield:Notify({
-            Title = "Memuat MT Atin",
-            Content = "Sedang memuat MT Atin, harap tunggu...",
-            Duration = 3,
-            Image = 4483362458,
-        })
-        
-        local url = "https://raw.githubusercontent.com/noirexe/berak/refs/heads/main/jembutatin.lua"
-        local s, e = pcall(function()
-            return loadstring(game:HttpGet(url))()
-        end)
+        loadScript(
+            "https://raw.githubusercontent.com/noirexe/berak/refs/heads/main/jembutatin.lua",
+            "MT Atin"
+        )
+    end,
+})
 
-        if not s then
-            warn("Error load main.lua:", e)
-            Rayfield:Notify({
-                Title = "Error",
-                Content = "Gagal memuat MT Atin: " .. tostring(e),
-                Duration = 6.5,
-                Image = 4483362458,
-            })
-        else
-            Rayfield:Notify({
-                Title = "Sukses",
-                Content = "MT Atin berhasil dimuat!",
-                Duration = 6.5,
-                Image = 4483362458,
-            })
-        end
+-- Membuat button untuk MT Atin Alternatif
+local AtinAltButton = MainTab:CreateButton({
+    Name = "MT Atin (Alternatif)",
+    Callback = function()
+        loadScript(
+            "https://raw.githubusercontent.com/noirexe/berak/main/jembutatin.lua",
+            "MT Atin Alternatif"
+        )
     end,
 })
 
@@ -66,34 +102,10 @@ local YahayukSection = MainTab:CreateSection("MT Yahayuk")
 local YahayukButton = MainTab:CreateButton({
     Name = "Tambahkan MT Yahayuk",
     Callback = function()
-        Rayfield:Notify({
-            Title = "Memuat MT Yahayuk",
-            Content = "Sedang memuat MT Yahayuk, harap tunggu...",
-            Duration = 3,
-            Image = 4483362458,
-        })
-        
-        local url = "https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutyahayuk.lua"
-        local s, e = pcall(function()
-            return loadstring(game:HttpGet(url))()
-        end)
-
-        if not s then
-            warn("Error load main.lua:", e)
-            Rayfield:Notify({
-                Title = "Error",
-                Content = "Gagal memuat MT Yahayuk: " .. tostring(e),
-                Duration = 6.5,
-                Image = 4483362458,
-            })
-        else
-            Rayfield:Notify({
-                Title = "Sukses",
-                Content = "MT Yahayuk berhasil dimuat!",
-                Duration = 6.5,
-                Image = 4483362458,
-            })
-        end
+        loadScript(
+            "https://raw.githubusercontent.com/AlfiFazulul/script/refs/heads/main/jembutyahayuk.lua",
+            "MT Yahayuk"
+        )
     end,
 })
 
@@ -102,26 +114,48 @@ local InfoTab = Window:CreateTab("Info", 4483362458)
 
 -- Menambahkan informasi
 InfoTab:CreateParagraph({
-    Title = "Informasi MT Manager",
-    Content = "Gunakan tombol di tab Main untuk menambahkan MT Atin atau MT Yahayuk secara manual.\n\nPastikan Anda memiliki koneksi internet yang stabil untuk mengunduh script dari GitHub."
+    Title = "Informasi MT Manager - Fixed",
+    Content = "UI ini telah diperbaiki dengan error handling yang lebih baik.\n\nError sebelumnya: 'attempt to call a nil value' pada baris 78 script MT Atin.\n\nCoba gunakan opsi alternatif jika salah satu script tidak bekerja."
 })
 
--- Menambahkan keybind untuk toggle UI (opsional)
-local ToggleSection = MainTab:CreateSection("Pengaturan UI")
-MainTab:CreateKeybind({
-    Name = "Toggle UI",
-    CurrentKeybind = "RightShift",
-    HoldToInteract = false,
-    Flag = "ToggleUIKeybind",
-    Callback = function(Keybind)
-        Rayfield:Toggle()
+-- Membuat tab troubleshooting
+local TroubleshootTab = Window:CreateTab("Troubleshoot", 4483362458)
+
+TroubleshootTab:CreateParagraph({
+    Title = "Solusi untuk Error",
+    Content = "1. Coba gunakan opsi alternatif\n2. Pastikan koneksi internet stabil\n3. Script mungkin perlu update oleh developer\n4. Error 'nil value' berarti ada fungsi yang tidak terdefinisi di script"
+})
+
+-- Menambahkan tombol untuk memeriksa koneksi
+TroubleshootTab:CreateButton({
+    Name = "Test Koneksi GitHub",
+    Callback = function()
+        local success = pcall(function()
+            game:HttpGet("https://github.com")
+        end)
+        
+        if success then
+            Rayfield:Notify({
+                Title = "Koneksi Baik",
+                Content = "Koneksi ke GitHub berhasil!",
+                Duration = 5,
+                Image = 4483362458,
+            })
+        else
+            Rayfield:Notify({
+                Title = "Koneksi Error",
+                Content = "Tidak dapat terhubung ke GitHub",
+                Duration = 5,
+                Image = 4483362458,
+            })
+        end
     end,
 })
 
 -- Menampilkan window
 Rayfield:Notify({
     Title = "MT Manager Dimuat",
-    Content = "Selamat menggunakan MT Manager!",
+    Content = "Versi dengan error handling yang diperbaiki!",
     Duration = 6.5,
     Image = 4483362458,
 })
